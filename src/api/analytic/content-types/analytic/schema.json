@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analytics",
+  "info": {
+    "singularName": "analytic",
+    "pluralName": "analytics",
+    "displayName": "Analytics"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post.post"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "datetime"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "referrer": {
+      "type": "string"
+    }
+  }
+}
