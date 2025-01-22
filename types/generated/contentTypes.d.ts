@@ -369,38 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAnalyticAnalytic extends Struct.CollectionTypeSchema {
-  collectionName: 'analytics';
-  info: {
-    displayName: 'Analytics';
-    pluralName: 'analytics';
-    singularName: 'analytic';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    duration: Schema.Attribute.Integer;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::analytic.analytic'
-    > &
-      Schema.Attribute.Private;
-    post: Schema.Attribute.Relation<'oneToOne', 'api::post.post'>;
-    publishedAt: Schema.Attribute.DateTime;
-    referrer: Schema.Attribute.String;
-    sessionId: Schema.Attribute.String;
-    timestamp: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -442,11 +410,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    author: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    > &
-      Schema.Attribute.Required;
+    author: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'> &
       Schema.Attribute.Required;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
@@ -1055,7 +1019,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::analytic.analytic': ApiAnalyticAnalytic;
       'api::category.category': ApiCategoryCategory;
       'api::post.post': ApiPostPost;
       'api::tag.tag': ApiTagTag;

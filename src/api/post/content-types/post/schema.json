@@ -8,7 +8,7 @@
     "description": "Blog posts collection"
   },
   "options": {
-    "draftAndPublish": true  
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -54,9 +54,8 @@
     },
     "author": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "required": true
+      "relation": "oneToOne",
+      "target": "admin::user"
     },
     "viewCount": {
       "type": "integer",
