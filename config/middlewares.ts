@@ -1,27 +1,25 @@
-module.exports = ({ env }: { env: any }) => [
+module.exports = [
   'strapi::errors',
   {
     name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
-        useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
-          'default-src': ["'self'"],
+          'default-src': ["'self'", 'https:'],
           'img-src': [
             "'self'",
             'data:',
             'blob:',
-            'market-assets.strapi.io',
-            'https://cthkswwbreetaeneeuyi.supabase.co',  // ระบุ URL Supabase ตรงๆ
+            'https://market-assets.strapi.io',
+            'https://hwlnatepusmcpmnmlroe.supabase.co', // เพิ่ม URL ของ Supabase
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'market-assets.strapi.io',
-            'https://cthkswwbreetaeneeuyi.supabase.co',  // ระบุ URL Supabase ตรงๆ
+            'https://hwlnatepusmcpmnmlroe.supabase.co', // เพิ่ม URL ของ Supabase
           ],
+          'connect-src': ["'self'", 'https:'],
         },
       },
     },

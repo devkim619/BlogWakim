@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feedbacks",
+  "info": {
+    "singularName": "feedback",
+    "pluralName": "feedbacks",
+    "displayName": "Feedback",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "feedback_id": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "comment": {
+      "type": "text"
+    },
+    "imageUrls": {
+      "type": "string" 
+    }
+  }
+}

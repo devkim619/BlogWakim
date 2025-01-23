@@ -8,7 +8,7 @@
     "description": "Blog posts collection"
   },
   "options": {
-    "draftAndPublish": true  
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -27,9 +27,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "slug": {
       "type": "uid",
@@ -52,12 +50,6 @@
       "relation": "manyToMany",
       "target": "api::tag.tag"
     },
-    "author": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "required": true
-    },
     "viewCount": {
       "type": "integer",
       "default": 0,
@@ -66,6 +58,12 @@
     "isFeature": {
       "type": "boolean",
       "default": false
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "required": true
     }
   }
 }
