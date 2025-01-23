@@ -398,6 +398,43 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeedbackFeedback extends Struct.CollectionTypeSchema {
+  collectionName: 'feedbacks';
+  info: {
+    description: '';
+    displayName: 'Feedback';
+    pluralName: 'feedbacks';
+    singularName: 'feedback';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comment: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    feedback_id: Schema.Attribute.String & Schema.Attribute.Required;
+    imageUrls: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::feedback.feedback'
+    > &
+      Schema.Attribute.Private;
+    phone: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 20;
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    username: Schema.Attribute.String;
+  };
+}
+
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
@@ -1023,6 +1060,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
+      'api::feedback.feedback': ApiFeedbackFeedback;
       'api::post.post': ApiPostPost;
       'api::tag.tag': ApiTagTag;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
