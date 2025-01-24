@@ -29,7 +29,13 @@
       "type": "text"
     },
     "imageUrls": {
-      "type": "string" 
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer",
+      "required": false,
+      "min": 1,
+      "max": 10
     }
   }
 }
