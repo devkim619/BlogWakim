@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agricultures_data",
+  "info": {
+    "singularName": "agriculture-data",
+    "pluralName": "agricultures-data",
+    "displayName": "AgricultureData"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "province": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "amphoe": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "tumbol": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "area": {
+      "type": "string"
+    },
+    "crop_type": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "solarCell": {
+      "type": "integer"
+    },
+    "month_start": {
+      "type": "date"
+    }
+  }
+}

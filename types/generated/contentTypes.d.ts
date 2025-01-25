@@ -369,6 +369,53 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAgricultureDataAgricultureData
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'agricultures_data';
+  info: {
+    displayName: 'AgricultureData';
+    pluralName: 'agricultures-data';
+    singularName: 'agriculture-data';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amphoe: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    area: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    crop_type: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::agriculture-data.agriculture-data'
+    > &
+      Schema.Attribute.Private;
+    month_start: Schema.Attribute.Date;
+    province: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    solarCell: Schema.Attribute.Integer;
+    tumbol: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -1067,6 +1114,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::agriculture-data.agriculture-data': ApiAgricultureDataAgricultureData;
       'api::category.category': ApiCategoryCategory;
       'api::feedback.feedback': ApiFeedbackFeedback;
       'api::post.post': ApiPostPost;
