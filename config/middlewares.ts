@@ -1,35 +1,37 @@
-module.exports = [
-  'strapi::errors',
+module.exports = ({ env }) => [
+  "strapi::errors",
   {
-    name: 'strapi::security',
+    name: "strapi::security",
     config: {
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
-          'default-src': ["'self'", 'https:'],
-          'img-src': [
+          "connect-src": ["'self'", "https:"],
+          "default-src": ["'self'"],
+          "img-src": [
             "'self'",
-            'data:',
-            'blob:',
-            'https://market-assets.strapi.io',
-            'https://hwlnatepusmcpmnmlroe.supabase.co', // เพิ่ม URL ของ Supabase
+            "data:",
+            "blob:",
+            "market-assets.strapi.io",
+            env("SUPABASE_URL"),
           ],
-          'media-src': [
+          "media-src": [
             "'self'",
-            'data:',
-            'blob:',
-            'https://hwlnatepusmcpmnmlroe.supabase.co', // เพิ่ม URL ของ Supabase
+            "data:",
+            "blob:",
+            "market-assets.strapi.io",
+            env("SUPABASE_URL"),
           ],
-          'connect-src': ["'self'", 'https:'],
         },
       },
     },
   },
-  'strapi::cors',
-  'strapi::poweredBy',
-  'strapi::logger',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
+  "strapi::cors",
+  "strapi::poweredBy",
+  "strapi::logger",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
 ];

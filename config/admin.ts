@@ -14,4 +14,7 @@ export default ({ env }) => ({
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
+  menu: {
+    logo: '/uploads/custom-logo.png', // Replace with your logo path
+  },
 });
