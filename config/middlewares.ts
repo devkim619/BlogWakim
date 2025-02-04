@@ -26,12 +26,33 @@ module.exports = ({ env }) => [
       },
     },
   },
-  "strapi::cors",
-  "strapi::poweredBy",
+  {
+    name: "strapi::cors",
+    config: {
+      origin: env("CORS_ORIGIN", "").split(","),
+      credentials: true,
+    },
+  },
+  {
+    name: "strapi::session",
+    config: {
+      enabled: true,
+      key: "strapi.sid",
+      httpOnly: true,
+      secure: env("NODE_ENV") === "production",
+      maxAge: 86400000,
+      sameSite: "lax",
+    },
+  },
+  {
+    name: "strapi::poweredBy",
+    config: {
+      enabled: false,
+    },
+  },
   "strapi::logger",
   "strapi::query",
   "strapi::body",
-  "strapi::session",
   "strapi::favicon",
   "strapi::public",
 ];
