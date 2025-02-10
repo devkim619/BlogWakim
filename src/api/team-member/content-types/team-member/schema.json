@@ -31,10 +31,6 @@
         "audios"
       ]
     },
-    "photoUrl": { 
-      "type": "string",
-      "required": false
-    },
     "socialLink": {
       "displayName": "Social Link",
       "type": "component",

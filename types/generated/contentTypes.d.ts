@@ -596,7 +596,6 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    photoUrl: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String & Schema.Attribute.Required;
     socialLink: Schema.Attribute.Component<'links.social-link', true>;
