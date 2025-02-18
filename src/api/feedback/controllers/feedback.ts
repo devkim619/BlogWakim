@@ -7,20 +7,27 @@ export default factories.createCoreController("api::feedback.feedback", ({ strap
     async delete(ctx) {
         try {
             const { id } = ctx.params;
-            console.log("🔹 Deleting feedback with ID:", id); // Log ID ที่ต้องการลบ
+            const ids = id.split(',');
 
-            // ตรวจสอบว่าข้อมูลมีอยู่จริงก่อน
-            const existing = await strapi.entityService.findOne("api::feedback.feedback", id);
-            if (!existing) {
-                console.log("❌ Feedback not found:", id);
-                return ctx.notFound("Feedback not found");
+            console.log("🔹 Deleting feedback with IDs:", ids); // Log IDs ที่ต้องการลบ
+
+            const deletedFeedbacks = [];
+
+            for (const feedbackId of ids) {
+                // ตรวจสอบว่าข้อมูลมีอยู่จริงก่อน
+                const existing = await strapi.entityService.findOne("api::feedback.feedback", feedbackId);
+                if (!existing) {
+                    console.log("❌ Feedback not found:", feedbackId);
+                    continue;
+                }
+
+                // ลบข้อมูล
+                const deleted = await strapi.entityService.delete("api::feedback.feedback", feedbackId);
+                console.log("✅ Deleted feedback:", deleted);
+                deletedFeedbacks.push(deleted);
             }
 
-            // ลบข้อมูล
-            const deleted = await strapi.entityService.delete("api::feedback.feedback", id);
-            console.log("✅ Deleted feedback:", deleted);
-
-            return deleted;
+            return deletedFeedbacks;
         } catch (error) {
             console.error("❌ Error deleting feedback:", error);
             return ctx.badRequest("Failed to delete feedback");
