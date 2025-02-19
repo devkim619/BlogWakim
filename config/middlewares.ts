@@ -33,7 +33,7 @@ module.exports = ({ env }) => [
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       credentials: true,
-      enabled: true,
+
     },
   },
   {
