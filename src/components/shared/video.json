@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "play",
+    "description": "Video embed component"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer",
+      "default": 1920
+    },
+    "height": {
+      "type": "integer",
+      "default": 1080
+    }
+  }
+}

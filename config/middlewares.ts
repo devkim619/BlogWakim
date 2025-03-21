@@ -22,6 +22,18 @@ module.exports = ({ env }) => [
             "market-assets.strapi.io",
             env("SUPABASE_URL"),
           ],
+          "frame-src": [
+            "'self'",
+            "youtube.com",
+            "www.youtube.com",
+            "youtube-nocookie.com",
+            "www.youtube-nocookie.com",
+            "vimeo.com",
+            "player.vimeo.com",
+            "*.vimeo.com",
+            "facebook.com",
+            "www.facebook.com",
+          ],
         },
       },
     },
@@ -30,10 +42,9 @@ module.exports = ({ env }) => [
     name: "strapi::cors",
     config: {
       origin: env("CORS_ORIGIN", "").split(","),
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       credentials: true,
-
     },
   },
   {

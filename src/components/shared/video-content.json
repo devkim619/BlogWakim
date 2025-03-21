@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_video_contents",
+  "info": {
+    "displayName": "Video Content",
+    "icon": "play",
+    "description": "Video content component"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "caption": {
+      "type": "text"
+    },
+    "video": {
+      "type": "customField",
+      "customField": "plugin::video-field.video",
+      "required": true
+    }
+  }
+}

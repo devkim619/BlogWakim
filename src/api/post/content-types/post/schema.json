@@ -21,7 +21,27 @@
     },
     "content": {
       "type": "blocks",
-      "required": true
+      "required": true,
+      "blocks": {
+        "video": {
+          "type": "video",
+          "icon": "play",
+          "label": "Video",
+          "settings": {
+            "title": {
+              "type": "string"
+            },
+            "caption": {
+              "type": "text"
+            },
+            "videoUrl": {
+              "type": "customField",
+              "customField": "plugin::video-field.video",
+              "required": true
+            }
+          }
+        }
+      }
     },
     "thumbnail": {
       "type": "media",
@@ -64,6 +84,11 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "required": true
+    },
+    "videos": {
+      "type": "component",
+      "component": "shared.video-content",
+      "repeatable": true
     }
   }
 }
